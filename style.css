@@ -25,3 +25,6 @@ html[data-theme="dark"]{color-scheme:dark;--bg:#101917;--surface:#17221f;--surfa
 @media(max-width:420px){.hero-buttons{flex-direction:column;width:100%;max-width:260px}.hero-status{font-size:9px}.hero h1{font-size:44px}.hero{min-height:690px}.experience-card{display:block}.org-icon{margin-bottom:12px}.project-details{padding:20px}.skill-card ul{gap:7px}.hero-description{max-width:300px}.mind-canvas{height:570px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
 @media print{.site-header,.hero,.section-about,.experience-list,.section-experience,.section-skills,.map-section,.section-projects,.section-writing,.section-contact,.footer,.resume-footer{display:none!important}#resume{padding:12px;background:white;color:#151515}#resume .resume-panel{box-shadow:none;break-inside:avoid}#resume .section-title{margin-bottom:10px}#resume .section-title h2{font-size:25px}#resume .resume-columns{gap:8px}#resume .resume-panel{padding:14px}body{font-size:12px}}
+
+/* Keep the native résumé useful when printing or saving to PDF. */
+@media print{main>section:not(#resume){display:none!important}#resume{display:block!important}#resume .section-title>p{display:none}}
