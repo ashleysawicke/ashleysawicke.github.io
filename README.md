@@ -1,27 +1,49 @@
 # Ashley Sawicke — Personal Portfolio
 
-Website: https://ashleysawicke.github.io/
+Portfolio URL: https://ashleysawicke.github.io/  
+Source repository: https://github.com/ashleysawicke/ashleysawicke.github.io
 
-An interactive portfolio built as a lightweight static website for GitHub Pages. The landing page features clickable project cards connected to a portrait with responsive SVG threads; the remaining sections cover my background, six projects, experience timeline, native HTML résumé, writing, and contact.
+A light-first, responsive personal and professional portfolio for Ashley Sawicke, a University of Michigan Computer Science student. The redesign takes **visual inspiration and section organization** from [Aditya's MIT-licensed Portfolio](https://github.com/adityacodes-root/Portfolio), while using a lightweight original HTML/CSS/JavaScript implementation that can be served directly on GitHub Pages. Thanks to [adityacodes-root](https://github.com/adityacodes-root) for making the reference portfolio available to adapt.
 
-## Site files
-- `index.html` — main page content and project information
-- `style.css` — colors, layouts, mobile design, print résumé styles
-- `script.js` — mobile navigation, dynamically drawn SVG threads, print résumé
-- `blog/index.html` — coming-soon personal writing page
+## Design
 
-## To personalize
-1. Replace the placeholder portrait in `index.html` with a photograph I own and a descriptive alt attribute.
-2. Replace illustrative project images or mockups with actual, approved screenshots.
-3. Add project/demo/GitHub links if and when they can be publicly shared.
-4. Add posts to the blog page over time.
+- **Two themes only:** light (default, white background) and dark. The icon in the header toggles themes; your explicit choice is remembered locally.
+- No paper-grid background in either theme.
+- Sage-green navigation bar, ladybug home icon, black/light text, and restrained warm palette accents (coral, orange, rose, gold, pink, forest, teal).
+- Centered, uncluttered landing page modeled after the reference's content hierarchy.
+- Responsive cards for work experience, skills, projects, and contact.
+- A separate interactive *map of my mind* section with clickable project links and curved connectors (a nod to the original idea, without cluttering the hero).
+- Six projects with useful detail dialogs, filters, and technology tags.
+- Native HTML résumé with print/save-to-PDF formatting.
+- Blank blog page at `blog/index.html`.
 
-The public contact email on the site is **asawicke@gmail.com**.
+## Files
 
-## Publishing
-Repository Settings → Pages → Build and deployment → Deploy from a branch → **main** → **/(root)** → Save. GitHub Pages normally takes several minutes to publish after commits.
+- `index.html` — page structure, content, project gallery, modal.
+- `style.css` — theme tokens, styling, breakpoints, print CSS.
+- `script.js` — light/dark theme, mobile menu, nav states, project filters and modals, mind-map connectors, résumé print.
+- `blog/index.html` — future writing home.
 
-## Assignment note
-The portfolio rubric also asks for a separately submitted PDF including a brief reflection, public URL, and snapshots of all pages. This isn't part of the site repository. Use Print → Save as PDF on both the home and blog pages, then combine with the reflection.
+## Personalization checklist
 
-Accessibility support includes semantic navigation, visible keyboard focus, skip link, `aria-expanded` mobile navigation, readable section hierarchy, and reduced-motion styling. Photos and mockups are explicitly marked as placeholders, and proprietary employer information is not published.
+- [ ] Replace the intentionally generic illustrated portrait with a photo of Ashley.
+- [ ] Replace the illustrative project art with screenshots when suitable and safe to share.
+- [ ] Link to real GitHub repositories/demos for projects that may be published (current details are accessible using **View project details**).
+- [ ] Add first blog post.
+- [ ] Review all content before sharing broadly, especially any employer or course-related project descriptions.
+
+Contact: **asawicke@gmail.com**  
+GitHub: **ashleysawicke**  
+LinkedIn: https://www.linkedin.com/in/ashley-sawicke/
+
+## Publication
+
+Settings → Pages → Build and deployment → **Deploy from a branch**, branch **main**, folder **/(root)** → Save. When Pages is enabled, new commits typically take a little time to go live.
+
+## Class assignment follow-up
+
+The assignment also requires a separate PDF submission with a short reflection, the live URL, and PDF snapshots of the site. That is separate from this repository. The site itself has a native HTML résumé, more than three projects, navigable sections, consistent styling, and a blog placeholder.
+
+## Attribution
+
+Visual/layout inspiration: **[adityacodes-root/Portfolio](https://github.com/adityacodes-root/Portfolio)**, [MIT License](https://github.com/adityacodes-root/Portfolio/blob/main/LICENSE), copyright © 2026 Aditya. This site is a separate static adaptation rather than a verbatim Next.js fork.
