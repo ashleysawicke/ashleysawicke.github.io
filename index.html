@@ -1,61 +1,131 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#8caa78">
+  <meta name="description" content="Ashley Sawicke — a software engineer in the making, a philosophy enthusiast, and a collector of interesting problems. Explore my work, experience, and ideas.">
+  <meta property="og:title" content="Ashley Sawicke — a map of my mind">
+  <meta property="og:description" content="An interactive portfolio of software, curiosity, and the things in between.">
+  <title>Ashley Sawicke — a map of my mind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"><script src="script.js" defer></script>
 </head>
 <body>
-
-<!-- Navbar -->
-<nav>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#resume">Resume</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#activities">Activities</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
-
-<!-- Home -->
-<section id="home">
-    <h1>Your Name</h1>
-    <p>Data Analyst | Software Engineer | Founder</p>
+<a class="skip-link" href="#content">Skip to main content</a>
+<header class="site-header" id="top">
+  <nav class="nav-inner" aria-label="Main navigation">
+    <a class="brand" href="#home" aria-label="Ashley Sawicke — home">
+      <span class="ladybug" aria-hidden="true">
+        <svg viewBox="0 0 52 52" width="41" height="41" xmlns="http://www.w3.org/2000/svg"><path d="M26 11C16 11 9 20 9 32c0 9 7 14 17 14s17-5 17-14C43 20 36 11 26 11" fill="#be3228" stroke="#25231e" stroke-width="2"/><path d="M26 11v35" stroke="#25231e" stroke-width="2"/><circle cx="18" cy="24" r="3.5" fill="#25231e"/><circle cx="34" cy="24" r="3.5" fill="#25231e"/><circle cx="19" cy="36" r="3" fill="#25231e"/><circle cx="33" cy="36" r="3" fill="#25231e"/><path d="m22 12-5-7m13 7 5-7M10 29H3m46 0h-7" fill="none" stroke="#25231e" stroke-width="2" stroke-linecap="round"/></svg>
+      </span><span>ashley<span class="brand-dot">.</span></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-links">Menu <span aria-hidden="true">☰</span></button>
+    <div class="nav-links" id="primary-links">
+      <a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#resume">Résumé</a><a href="#writing">Writing</a>
+      <a class="nav-contact" href="#contact">Say hello <span aria-hidden="true">↗</span></a>
+    </div>
+  </nav>
+</header>
+<main id="content">
+<section class="hero" id="home" aria-labelledby="hero-heading">
+  <div class="container hero-heading-row">
+    <div>
+      <p class="eyebrow">An interactive archive of work, wonders & what-ifs <span class="mini-spark" aria-hidden="true">✳</span></p>
+      <h1 id="hero-heading">Hi, I'm<br><span>Ashley<span class="name-dot">.</span></span></h1>
+    </div>
+    <div class="hero-description"><span class="hero-asterisk" aria-hidden="true">✳</span><p>Computer science student.<br>Philosophy enthusiast.<br>Curious about pretty much everything.</p><span class="eyebrow">Follow a thread ↓</span></div>
+  </div>
+  <div class="mindmap container" id="mindmap">
+    <svg class="thread-lines" id="thread-lines" aria-hidden="true" focusable="false"></svg>
+    <a class="thought thought-fruit" href="#project-fruit" data-thread="#be3228" aria-label="Explore Fruit Vision machine learning project">
+      <span class="thought-art thought-art-fruit"><span class="art-eyebrow">01 / IMAGINE</span><span class="art-type">FRUIT<br>+ AI</span><span class="art-symbol">✳</span></span><span class="thought-label"><strong>Teaching computers to see fruit</strong><small>MACHINE LEARNING ↗</small></span>
+    </a>
+    <a class="thought thought-quantum" href="#project-quantum" data-thread="#d49a3f" aria-label="Explore Quantum UNO game project">
+      <span class="thought-art thought-art-quantum"><span class="art-eyebrow">02 / PLAY</span><span class="art-type">UNO<span class="tiny-atom">⚛</span></span></span><span class="thought-label"><strong>Quantum, but make it a game</strong><small>GAME DEVELOPMENT ↗</small></span>
+    </a>
+    <a class="thought thought-tools" href="#project-toolkit" data-thread="#588a61" aria-label="Explore Glassmaking Operations Toolkit">
+      <span class="thought-art thought-art-tools"><span class="art-eyebrow">03 / MAKE</span><span class="art-type">MAKE<br>IT WORK.</span></span><span class="thought-label"><strong>Tools for the people using them</strong><small>HUMAN-CENTERED TECH ↗</small></span>
+    </a>
+    <a class="thought thought-racing" href="#project-racing" data-thread="#469696" aria-label="Explore autonomous MRacing project">
+      <span class="thought-art thought-art-racing"><span class="art-eyebrow">04 / MOVE</span><span class="art-type">↗↗↗</span></span><span class="thought-label"><strong>Making race cars smarter</strong><small>AUTONOMOUS SYSTEMS ↗</small></span>
+    </a>
+    <a class="thought thought-web" href="#project-web" data-thread="#be3c63" aria-label="Explore client frontend web projects">
+      <span class="thought-art thought-art-web"><span class="art-eyebrow">05 / DESIGN</span><span class="art-type">HELLO<br>WORLD!</span></span><span class="thought-label"><strong>Digital places for real people</strong><small>FRONTEND ENGINEERING ↗</small></span>
+    </a>
+    <a class="thought thought-graphs" href="#project-graphs" data-thread="#d87842" aria-label="Explore graph optimization project">
+      <span class="thought-art thought-art-graphs"><span class="art-eyebrow">06 / SOLVE</span><span class="art-type">G=(V,E)</span></span><span class="thought-label"><strong>Finding a better route</strong><small>ALGORITHMS ↗</small></span>
+    </a>
+    <figure class="hero-portrait"><div class="portrait-frame">
+      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85" alt="Temporary editorial portrait; to be replaced with Ashley's own photograph" fetchpriority="high">
+      <span class="photo-placeholder-label">YOUR PORTRAIT GOES HERE</span>
+    </div><figcaption>at the center of it all <span aria-hidden="true">♥</span></figcaption></figure>
+    <span class="thread-origin" id="thread-origin" aria-hidden="true"></span>
+  </div>
+  <div class="container hero-bottom"><span>CLICK A CARD · FOLLOW A THOUGHT · GET TO KNOW ME</span><a href="#about">OR TAKE THE SCENIC ROUTE ↓</a></div>
+  <div class="hero-statement" aria-hidden="true">A MAP OF MY MIND <span>✳</span></div>
 </section>
-
-<!-- About -->
-<section id="about">
-    <h2>About Me</h2>
-    <p>Write a short bio here about your work and passions.</p>
+<section id="about" class="section section-about">
+  <div class="container">
+    <div class="section-head"><span class="section-index">(01) / THE PERSON</span><h2>A little <em>about me.</em></h2></div>
+    <div class="about-grid">
+      <div class="about-prose">
+        <p class="lead">I'm a software engineer in the making, fascinated by the space where <mark>technology, people, and ideas</mark> meet.</p>
+        <p>I'm studying Computer Science at the <strong>University of Michigan</strong> with a minor in Philosophy. I love figuring out how things work, but care just as much about whether what we're building makes someone's day—or the world—a little better.</p>
+        <p>I've worked on everything from production-floor tools and client websites to machine learning models and autonomous vehicles. Different settings, same favorite challenge: understand the problem, make something useful, and keep improving it.</p>
+        <p>My interests in applied ethics and global priorities continually shape how I think about my responsibilities as an engineer and the impact of the technology I help create.</p>
+        <a class="text-link" href="#experience">Here's where I've been ↗</a>
+      </div>
+      <aside class="side-note"><span class="note-star" aria-hidden="true">✷</span><p class="eyebrow">BEYOND THE TERMINAL</p><h3>And when I'm not coding?</h3><p>I'm probably running, watching a film, listening to music, talking philosophy, or thinking about the Great Lakes and somewhere new to explore.</p>
+        <div class="pills"><span>✴ Film</span><span>↝ Running</span><span>☼ Nature</span><span>♡ Philosophy</span><span>♪ Music</span><span>⚛ Quantum</span></div>
+      </aside>
+    </div>
+  </div>
 </section>
-
-<!-- Resume -->
-<section id="resume">
-    <h2>Resume</h2>
-    <p>List work experience and education here.</p>
+<section id="projects" class="section section-projects">
+  <div class="container"><div class="section-head"><span class="section-index">(02) / THINGS I'VE MADE</span><h2>Selected <em>work.</em></h2><p>Different disciplines, shared curiosity. A few of the problems I've had the pleasure of working on.</p></div>
+  <div class="projects-grid">
+    <article class="project" id="project-fruit"><div class="project-art project-fruit"><img loading="lazy" src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=1000&q=82" alt="Illustrative photograph of colorful fruit"><span class="project-overlay-type">SEEING IS<br>BELIEVING ✳</span><small>PLACEHOLDER IMAGE · 01</small></div>
+      <div class="project-body"><div class="project-meta"><span>01</span><span>AI / MACHINE LEARNING</span></div><h3>Fruit Vision</h3><p>Created a fruit-identification application using a convolutional neural network, reaching <strong>92% accuracy across 30+ fruit categories.</strong> Preprocessed over 5,000 images using augmentation and image processing to strengthen performance.</p><div class="pills tech"><span>Python</span><span>TensorFlow</span><span>Keras</span><span>OpenCV</span></div><a href="#contact" class="text-link">Ask me about it ↗</a></div>
+    </article>
+    <article class="project" id="project-quantum"><div class="project-art project-quantum"><div class="cards-visual" aria-hidden="true"><div>⚛<small>SUPERPOSITION</small></div><div>UNO!<small>ENTANGLEMENT</small></div><div>↗<small>YOUR TURN</small></div></div><small>ILLUSTRATIVE ARTWORK · 02</small></div>
+      <div class="project-body"><div class="project-meta"><span>02</span><span>GAME DESIGN / LEADERSHIP</span></div><h3>Quantum UNO</h3><p>Lead a student team developing a Unity card game that brings quantum concepts—superposition, entanglement, and gates—into playful mechanics and interactive learning.</p><div class="pills tech"><span>Unity</span><span>C#</span><span>Git</span><span>Team leadership</span></div><a href="#contact" class="text-link">Ask me about it ↗</a></div>
+    </article>
+    <article class="project" id="project-toolkit"><div class="project-art project-toolkit"><div class="mock-toolkit" aria-hidden="true"><div class="mock-toolbar"><span>● ● ●</span> &nbsp; OPERATIONS / OVERVIEW</div><div class="mock-sidebar"><i></i><i></i><i></i></div><div class="mock-content"><small>OPERATIONS TOOLKIT</small><strong>Less friction.<br>More flow.</strong><div class="mock-buttons"><b></b><b></b></div></div></div><small>ILLUSTRATIVE MOCKUP · 03</small></div>
+      <div class="project-body"><div class="project-meta"><span>03</span><span>INDUSTRIAL SOFTWARE / UX</span></div><h3>Glassmaking Operations Toolkit</h3><p>Created connected digital tools for supervisors and technicians at Corning's optical fiber plant, removing <strong>four or more repetitive steps</strong> from daily workflows. Details are intentionally high-level to respect workplace confidentiality.</p><div class="pills tech"><span>SharePoint</span><span>Workflow design</span><span>Usability</span></div><a href="#experience" class="text-link">Related experience ↗</a></div>
+    </article>
+    <article class="project" id="project-racing"><div class="project-art project-racing"><img loading="lazy" src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=82" alt="Illustrative sports car photo, not the MRacing vehicle"><span class="project-overlay-type">PERCEIVE.<br>DECIDE.<br>DRIVE.</span><small>PLACEHOLDER IMAGE · 04</small></div>
+      <div class="project-body"><div class="project-meta"><span>04</span><span>ROBOTICS / PERCEPTION</span></div><h3>MRacing Autonomous Systems</h3><p>Contributed to autonomous vehicle perception through sensor-fusion covariance modeling and simulated multi-sensor processing pipelines for a Formula SAE racing team.</p><div class="pills tech"><span>C++</span><span>ROS</span><span>RViz</span><span>Sensor fusion</span></div><a href="#resume" class="text-link">My technical background ↗</a></div>
+    </article>
+    <article class="project" id="project-web"><div class="project-art project-web"><div class="mock-browser" aria-hidden="true"><div class="mock-toolbar">● ● ● <span>DESIGN FOR EVERYONE</span></div><div class="mock-browser-body"><i>✳</i><strong>human<br>centered.</strong><b>↗</b></div></div><small>ILLUSTRATIVE MOCKUP · 05</small></div>
+      <div class="project-body"><div class="project-meta"><span>05</span><span>FRONTEND / ACCESSIBILITY</span></div><h3>Client Web Experiences</h3><p>Built modular WordPress components and improved navigation and information layouts for client websites at Cynerge Consulting, working with stakeholders to shape more intuitive experiences.</p><div class="pills tech"><span>PHP</span><span>HTML</span><span>CSS</span><span>WordPress</span></div><a href="#experience" class="text-link">Related experience ↗</a></div>
+    </article>
+    <article class="project" id="project-graphs"><div class="project-art project-graphs"><svg viewBox="0 0 500 280" role="img" aria-label="Illustrative graph of five connected nodes"><g fill="none" stroke="#c75f3d" stroke-width="3"><path d="M65 210 140 72 260 154 387 55 436 203 260 154 65 210 436 203 140 72"/></g><g fill="#fff9dd" stroke="#89482b" stroke-width="4"><circle cx="65" cy="210" r="18"/><circle cx="140" cy="72" r="18"/><circle cx="260" cy="154" r="18"/><circle cx="387" cy="55" r="18"/><circle cx="436" cy="203" r="18"/></g><text x="28" y="40" font-family="monospace" font-size="23" fill="#8c432d">G = (V, E)</text></svg><small>ILLUSTRATIVE DIAGRAM · 06</small></div>
+      <div class="project-body"><div class="project-meta"><span>06</span><span>ALGORITHMS / OPTIMIZATION</span></div><h3>Graph Optimization</h3><p>Implemented minimum-spanning-tree and traveling-salesperson approaches in C++, combining heuristic search, branch-and-bound, and 2-opt improvement to balance runtime with solution quality.</p><div class="pills tech"><span>C++</span><span>Graphs</span><span>MST / TSP</span><span>Optimization</span></div><a href="#resume" class="text-link">My technical background ↗</a></div>
+    </article>
+  </div><p class="disclosure">Visuals are illustrative placeholders, not screenshots of proprietary work. Original screenshots or approved demos can replace them later.</p>
+  </div>
 </section>
-
-<!-- Projects -->
-<section id="projects">
-    <h2>Projects</h2>
-    <p>Showcase your work here with images and links.</p>
-</section>
-
-<!-- Activities -->
-<section id="activities">
-    <h2>Activities</h2>
-    <p>Highlight leadership, volunteering, or extracurriculars.</p>
-</section>
-
-<!-- Contact -->
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Email: your@email.com</p>
-</section>
-
-<script src="script.js"></script>
-</body>
-</html>
+<section id="experience" class="section section-experience"><div class="container">
+  <div class="section-head"><span class="section-index">(03) / ALONG THE WAY</span><h2>My <em>timeline.</em></h2></div>
+  <div class="timeline">
+    <article class="timeline-entry"><time>2026 / MAY–AUG</time><div class="timeline-content"><span class="eyebrow">INDUSTRY / INTERNSHIP</span><h3>Corning Incorporated</h3><strong>Control Systems Developer Intern · Wilmington, NC</strong><p>Developed production-floor tools for technicians and shift supervisors, improved a legacy VB6 label printer, and built validated barcode-scanning functionality for shop-floor interfaces.</p><a href="#project-toolkit">Explore the related project ↗</a></div></article>
+    <article class="timeline-entry"><time>2025–PRESENT</time><div class="timeline-content"><span class="eyebrow">LEADERSHIP / STUDENT TEAM</span><h3>QuantUM</h3><strong>Project Team Leader · Game Developer</strong><p>Leading developers and designers building quantum-inspired UNO in Unity, combining teamwork, software architecture, and interactive game mechanics.</p><a href="#project-quantum">Explore the related project ↗</a></div></article>
+    <article class="timeline-entry"><time>2024–PRESENT</time><div class="timeline-content"><span class="eyebrow">STUDENT TEAM / MACHINE LEARNING</span><h3>Michigan Data Science Team</h3><strong>Software Developer</strong><p>Designed and trained a fruit-identification CNN, exploring preprocessing and model performance across more than thirty categories.</p><a href="#project-fruit">Explore the related project ↗</a></div></article>
+    <article class="timeline-entry"><time>2024 / MAY–DEC</time><div class="timeline-content"><span class="eyebrow">INDUSTRY / INTERNSHIP</span><h3>Cynerge Consulting</h3><strong>Frontend Web Developer Intern · Pontiac, MI</strong><p>Developed custom WordPress components, improved client websites, and collaborated in stand-ups and stakeholder meetings to build accessible, maintainable interfaces.</p><a href="#project-web">Explore the related project ↗</a></div></article>
+    <article class="timeline-entry"><time>2023–2024</time><div class="timeline-content"><span class="eyebrow">STUDENT TEAM / AUTONOMY</span><h3>MRacing Formula SAE</h3><strong>Autonomous Division · Software Developer</strong><p>Worked on real-time sensor processing, covariance modeling, and simulated multi-sensor data in ROS and RViz.</p><a href="#project-racing">Explore the related project ↗</a></div></article>
+  </div>
+</div></section>
+<section id="resume" class="section section-resume"><div class="container">
+  <div class="section-head"><span class="section-index">(04) / THE PROFESSIONAL DETAILS</span><h2>The <em>résumé.</em></h2><p>A native, browser-friendly résumé, with links connecting experience to the projects behind it.</p></div>
+  <div class="resume-grid">
+    <section class="resume-box"><h3>Education</h3><p><strong>University of Michigan</strong><br>College of Engineering · Ann Arbor, MI<br>B.S.E. Computer Science · Minor in Philosophy<br>Expected May 2027 · GPA 3.5</p><p>Relevant courses: Data Structures & Algorithms, Machine Learning, Web Systems, Security, Human-Centered Software Development, Statistics, Theory of Computation, Quantum Information Science.</p></section>
+    <section class="resume-box"><h3>Technical toolkit</h3><p><strong>Languages</strong><br>C++, C, Python, JavaScript, PHP, C#, VB6, SQL, MATLAB, R</p><p><strong>Web / frameworks</strong><br>HTML, CSS, React, Flask, Jinja, WordPress, Unity, Qiskit</p><p><strong>Tools / systems</strong><br>Linux, Shell Scripting, Git/GitHub, OpenCV, TensorFlow, Keras, ROS</p></section>
+    <section class="resume-box resume-wide"><h3>Professional experience</h3><div class="resume-job"><h4>Corning Incorporated <span>May–Aug 2026</span></h4><p class="resume-role">Control Systems Developer Intern · Wilmington, NC</p><ul><li>Built integrated production-floor resources, simplifying repetitive workflows for shift supervisors and technicians. <a href="#project-toolkit">Related project ↗</a></li><li>Improved configuration, printer integration, and operator UI behavior in a VB6 label-printing app.</li><li>Developed barcode-scanning input with validation and phased-rollout considerations.</li></ul></div><div class="resume-job"><h4>Cynerge Consulting <span>May–Dec 2024</span></h4><p class="resume-role">Frontend Web Developer Intern · Pontiac, MI</p><ul><li>Built custom, maintainable WordPress components using PHP, HTML and CSS. <a href="#project-web">Related project ↗</a></li><li>Redesigned client content layouts with usability and accessibility in mind.</li><li>Collaborated in more than thirty stand-ups and regular client meetings to define needs and improve delivery.</li></ul></div></section>
+    <section class="resume-box"><h3>Projects & teams</h3><ul><li><a href="#project-fruit">Fruit Vision</a> — CNN classifier; 92% accuracy across 30+ categories.</li><li><a href="#project-quantum">Quantum UNO</a> — Unity game development and team leadership.</li><li><a href="#project-racing">MRacing</a> — autonomous sensor fusion and robotics.</li><li><a href="#project-graphs">Graph Optimization</a> — MST and TSP algorithms in C++.</li><li>Machine Learning Classifier — C++ probabilistic text model, 90%+ accuracy.</li></ul></section>
+    <section class="resume-box"><h3>Community & interests</h3><p>QuantUM, Michigan Data Science Team, MRacing, Girls in Computer Science & Electrical Engineering, Society of Women Engineers, Michigan Undergraduate Philosophy Journal.</p><p>Running, film studies, applied ethics, hiking, French language and culture.</p><button id="print-resume" class="resume-print" type="button">Print / save as PDF ↗</button></section>
+  </div>
+</div></section>
+<section id="writing" class="section section-writing"><div class="container writing-grid"><div><span class="section-index">(05) / THOUGHTS IN PROGRESS</span><h2>Notes from<br><em>the margins.</em></h2><p>Eventually this will be a little corner of the internet for writing about technology, philosophy, film, global priorities, and all the questions I can't stop asking.</p><a class="writing-link" href="blog/">Visit the very new blog ↗</a></div><div class="writing-art" aria-hidden="true"><span>Dear<br>internet,</span><i>✳</i><span>more soon.</span></div></div></section>
+<section id="contact" class="section-contact"><div class="container"><span class="section-index">(06) / STAY IN TOUCH</span><h2>Good things start<br>with <em>a conversation.</em></h2><p>Have a project, a question, or an idea worth thinking about together? I'd love to hear from you.</p><div class="contact-links"><a href="mailto:asawicke@gmail.com">Email me ↗</a><a href="https://www.linkedin.com/in/ashley-sawicke/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://github.com/ashleysawicke" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div><footer><span>© <span id="year">2026</span> Ashley Sawicke</span><span>Made with curiosity, care & a little color. ✳</span><a href="#home">Back to top ↑</a></footer></div></section>
+</main></body></html>
