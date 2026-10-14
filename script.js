@@ -1,54 +1,36 @@
-(() => {
-  const toggle = document.querySelector('.menu-toggle');
-  const links = document.getElementById('primary-links');
-  if(toggle && links) {
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-      toggle.innerHTML = open ? 'Close <span aria-hidden="true">×</span>' : 'Menu <span aria-hidden="true">☰</span>';
-    });
-    links.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      links.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.innerHTML = 'Menu <span aria-hidden="true">☰</span>';
-    }));
-  }
-  const year = document.getElementById('year'); if(year) year.textContent = new Date().getFullYear();
-  const print = document.getElementById('print-resume');
-  if(print) print.addEventListener('click', () => window.print());
-  const map = document.getElementById('mindmap');
-  const svg = document.getElementById('thread-lines');
-  const origin = document.getElementById('thread-origin');
-  if(!map || !svg || !origin) return;
-  const cards = [...map.querySelectorAll('.thought')];
-  const ns = 'http://www.w3.org/2000/svg';
-  function drawThreads() {
-    svg.replaceChildren();
-    if(window.matchMedia('(max-width: 740px)').matches) return;
-    const base = map.getBoundingClientRect();
-    const dot = origin.getBoundingClientRect();
-    const startX = dot.left + dot.width / 2 - base.left;
-    const startY = dot.top + dot.height / 2 - base.top;
-    svg.setAttribute('viewBox', '0 0 ' + base.width + ' ' + base.height);
-    cards.forEach((card, i) => {
-      const box = card.getBoundingClientRect();
-      const x = box.left + box.width / 2 - base.left;
-      const y = box.top + box.height / 2 - base.top;
-      const dx = x - startX;
-      const dy = y - startY;
-      const lift = (i % 2 ? -1 : 1) * Math.min(105, Math.abs(dx) * .17);
-      const path = document.createElementNS(ns, 'path');
-      path.setAttribute('d', 'M ' + startX + ' ' + startY + ' C ' + (startX+dx*.25+lift) + ' ' + (startY+dy*.13) + ', ' + (startX+dx*.69-lift*.6) + ' ' + (startY+dy*.88) + ', ' + x + ' ' + y);
-      path.setAttribute('stroke', card.dataset.thread || '#bb443f');
-      svg.appendChild(path);
-      card.addEventListener('mouseenter', () => path.classList.add('active'));
-      card.addEventListener('mouseleave', () => path.classList.remove('active'));
-      card.addEventListener('focus', () => path.classList.add('active'));
-      card.addEventListener('blur', () => path.classList.remove('active'));
-    });
-  }
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(drawThreads);
-  window.addEventListener('load', drawThreads, {once:true});
-  window.addEventListener('resize', () => window.requestAnimationFrame(drawThreads));
-  drawThreads();
+(()=>{"use strict";
+  const root=document.documentElement;
+  const themeButton=document.getElementById("theme-toggle");
+  function syncTheme(){const dark=root.dataset.theme==="dark";if(themeButton){themeButton.setAttribute("aria-label",dark?"Switch to light mode":"Switch to dark mode");themeButton.title=dark?"Light mode":"Dark mode";}document.querySelector('meta[name="theme-color"]')?.setAttribute("content",dark?"#58724d":"#8caa78");}
+  themeButton?.addEventListener("click",()=>{root.dataset.theme=root.dataset.theme==="dark"?"light":"dark";try{localStorage.setItem("ashley-theme",root.dataset.theme)}catch(e){}syncTheme()});syncTheme();
+  const menu=document.getElementById("site-menu"),menuButton=document.getElementById("menu-button");
+  function closeMenu(){menu?.classList.remove("open");menuButton?.setAttribute("aria-expanded","false");menuButton?.setAttribute("aria-label","Open navigation menu")}
+  menuButton?.addEventListener("click",()=>{const open=menu.classList.toggle("open");menuButton.setAttribute("aria-expanded",String(open));menuButton.setAttribute("aria-label",open?"Close navigation menu":"Open navigation menu")});
+  menu?.querySelectorAll("a").forEach(link=>link.addEventListener("click",closeMenu));
+  window.addEventListener("resize",()=>{if(window.innerWidth>900)closeMenu()});
+  const year=document.getElementById("year");if(year)year.textContent=new Date().getFullYear();
+  const sections=[...document.querySelectorAll("main section[id]")].filter(section=>["about","experience","skills","projects","resume","contact"].includes(section.id));
+  if("IntersectionObserver" in window){const io=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!visible)return;menu?.querySelectorAll('a[href^="#"]').forEach(a=>{const active=a.getAttribute("href")==="#"+visible.target.id;a.classList.toggle("active",active);if(active)a.setAttribute("aria-current","location");else a.removeAttribute("aria-current")})},{rootMargin:"-18% 0px -62% 0px",threshold:0});sections.forEach(s=>io.observe(s))}
+  document.getElementById("print-resume")?.addEventListener("click",()=>window.print());
+  const filters=[...document.querySelectorAll(".filter")],cards=[...document.querySelectorAll(".project-card")];
+  filters.forEach(btn=>btn.addEventListener("click",()=>{const value=btn.dataset.filter;filters.forEach(b=>{const selected=b===btn;b.classList.toggle("active",selected);b.setAttribute("aria-pressed",String(selected))});cards.forEach(card=>{card.hidden=value!=="all"&&card.dataset.category!==value})}));
+  const projects={
+    fruit:{title:"Fruit Vision",label:"Machine learning · Image classification",description:"An application that uses a convolutional neural network to recognize fruit from images.",work:"I curated and preprocessed more than 5,000 fruit images with OpenCV and NumPy, then trained and evaluated a TensorFlow/Keras model across over thirty categories. The classifier achieved 92% accuracy; augmentation and preprocessing helped reduce classification errors.",learned:"Building a reliable model takes more than choosing an architecture. Data quality, careful experimentation, and the context in which people use predictions matter.",tags:["Python","Keras","TensorFlow","OpenCV","Computer vision"]},
+    uno:{title:"Quantum UNO",label:"Game design · Student team leadership",description:"A Unity-based UNO game that uses quantum-mechanics-inspired rules to make difficult ideas playful.",work:"I lead a team of developers and designers, coordinate version control and overall architecture, and help implement card interactions with C# and Unity animation systems. Mechanics take inspiration from superposition, entanglement, and quantum circuit gates.",learned:"Leading a cross-disciplinary project has made me think more carefully about communication, good abstractions, and how software design shapes a user's understanding of new concepts.",tags:["Unity","C#","GitHub","Interaction design"]},
+    toolkit:{title:"Glassmaking Operations Toolkit",label:"Human-centered engineering · Corning",description:"A connected collection of digital production-floor resources for technicians and shift supervisors.",work:"During my internship at Corning, I organized production workflow tools in a SharePoint network, removing four or more repeated steps in common workflows. I also worked on VB6 operator software, including barcode scanning validation and label printer reliability.",learned:"Internal software succeeds when it respects the realities of the people using it. I learned to pay close attention to operator workflows, error prevention, and deployment constraints. Details are deliberately generalized to respect workplace confidentiality.",tags:["SharePoint","VB6","Workflow design","Usability"]},
+    racing:{title:"MRacing Autonomous Systems",label:"Robotics · Autonomous Formula SAE",description:"Autonomous racing development focused on localization and perception.",work:"I worked with covariance modeling for sensor fusion and C++/ROS pipelines that simulate real-time sensor data in RViz. The goal was to help build a more accurate representation of the vehicle's environment.",learned:"Robotics taught me to connect mathematical models to noisy real-world data, and to think about correctness in systems that must make decisions continuously.",tags:["C++","ROS","RViz","Sensor fusion"]},
+    web:{title:"Client Web Experiences",label:"Frontend engineering · Cynerge Consulting",description:"Accessible, maintainable web interfaces built for clients and the people who use their sites.",work:"As a frontend developer intern, I developed reusable WordPress components with PHP, HTML, and CSS; refined content layouts and navigation; and worked closely with technical teammates and clients to define solutions.",learned:"The best interface is not necessarily the flashiest. Clarity, accessibility, consistency, and collaboration often produce the strongest long-term results.",tags:["WordPress","PHP","HTML","CSS","Accessibility"]},
+    graph:{title:"Graph Optimization",label:"Algorithms · C++",description:"Implementations of graph algorithms for finding efficient routes.",work:"I built C++ implementations of minimum spanning tree and traveling salesperson approaches, combining heuristic solutions, 2-opt improvement, and branch-and-bound searching to trade off runtime against route quality.",learned:"This work strengthened how I reason about algorithmic complexity, state-space search, and measuring improvements rather than assuming that more complex approaches are always better.",tags:["C++","Algorithms","MST","TSP","Optimization"]}
+  };
+  const dialog=document.getElementById("project-dialog"),close=document.getElementById("dialog-close");
+  let lastOpener=null;
+  document.querySelectorAll("[data-project]").forEach(button=>button.addEventListener("click",()=>{const d=projects[button.dataset.project];if(!d||!dialog)return;lastOpener=button;document.getElementById("dialog-label").textContent=d.label;document.getElementById("dialog-title").textContent=d.title;document.getElementById("dialog-description").textContent=d.description;document.getElementById("dialog-work").textContent=d.work;document.getElementById("dialog-learned").textContent=d.learned;const tags=document.getElementById("dialog-tags");tags.replaceChildren(...d.tags.map(x=>{const s=document.createElement("span");s.textContent=x;return s}));if(typeof dialog.showModal==="function")dialog.showModal();else dialog.setAttribute("open","");close?.focus()}));
+  function closeDialog(){if(dialog?.close)dialog.close();else dialog?.removeAttribute("open");lastOpener?.focus()}
+  close?.addEventListener("click",closeDialog);
+  document.getElementById("dialog-contact")?.addEventListener("click",closeDialog);
+  dialog?.addEventListener("click",e=>{if(e.target===dialog)closeDialog()});
+  dialog?.addEventListener("close",()=>lastOpener?.focus());
+  const canvas=document.getElementById("mind-canvas"),lineSvg=document.getElementById("mind-lines");
+  function drawLines(){if(!canvas||!lineSvg)return;lineSvg.replaceChildren();if(window.innerWidth<=690)return;const frame=canvas.getBoundingClientRect();lineSvg.setAttribute("viewBox","0 0 "+frame.width+" "+frame.height);const c=canvas.querySelector(".mind-avatar").getBoundingClientRect();const x0=c.left+c.width/2-frame.left,y0=c.top+c.height/2-frame.top;canvas.querySelectorAll(".mind-node").forEach((node,i)=>{const b=node.getBoundingClientRect(),x=b.left+b.width/2-frame.left,y=b.top+b.height/2-frame.top;const path=document.createElementNS("http://www.w3.org/2000/svg","path");const dx=x-x0,dy=y-y0;const swirl=(i%2===0?1:-1)*Math.min(70,Math.abs(dx)*.15);path.setAttribute("d","M"+x0+" "+y0+" C"+(x0+dx*.25+swirl)+" "+(y0+dy*.2)+" "+(x0+dx*.75-swirl)+" "+(y0+dy*.8)+" "+x+" "+y);path.setAttribute("stroke",node.dataset.color||"#be504b");lineSvg.appendChild(path)});}
+  window.addEventListener("load",drawLines,{once:true});window.addEventListener("resize",()=>requestAnimationFrame(drawLines));if(document.fonts?.ready)document.fonts.ready.then(drawLines);drawLines();
 })();
